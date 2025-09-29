@@ -2,35 +2,35 @@
   "alunos": [
     {
       "id": 1,
-      "nome": "João",
+      "nome": "João da Silva",
       "idade": 20,
       "notas": [70, 65, 80],
       "frequencia": [1,1,1,1,0,1,1,1,1,1]
     },
     {
       "id": 2,
-      "nome": "Maria",
+      "nome": "Maria Ferreira",
       "idade": 22,
       "notas": [50, 60, 55],
       "frequencia": [1,1,0,0,1,1,1,1,1,0]
     },
     {
       "id": 3,
-      "nome": "Carlos",
+      "nome": "Carlos Vasconcelos",
       "idade": 19,
       "notas": [90, 85, 88],
       "frequencia": [1,1,1,1,1,1,1,1,1,1]
     },
     {
       "id": 4,
-      "nome": "Ana",
+      "nome": "Ana Cabral",
       "idade": 21,
       "notas": [75, 70, 72],
       "frequencia": [1,1,1,0,1,1,1,1,1,1]
     },
     {
       "id": 5,
-      "nome": "Lucas",
+      "nome": "Lucas Pereira",
       "idade": 23,
       "notas": [40, 55, 50],
       "frequencia": [0,0,1,0,1,0,1,0,0,1]
