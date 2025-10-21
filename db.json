@@ -1,39 +1,92 @@
 {
-  "alunos": [
+  "elementos": [
     {
       "id": 1,
-      "nome": "João da Silva",
-      "idade": 20,
-      "notas": [70, 65, 80],
-      "frequencia": [1,1,1,1,0,1,1,1,1,1]
+      "nome": "Hidrogênio"
     },
     {
       "id": 2,
-      "nome": "Maria Ferreira",
-      "idade": 22,
-      "notas": [50, 60, 55],
-      "frequencia": [1,1,0,0,1,1,1,1,1,0]
+      "nome": "Lítio"
     },
     {
       "id": 3,
-      "nome": "Carlos Vasconcelos",
-      "idade": 19,
-      "notas": [90, 85, 88],
-      "frequencia": [1,1,1,1,1,1,1,1,1,1]
+      "nome": "Sódio"
     },
     {
       "id": 4,
-      "nome": "Ana Cabral",
-      "idade": 21,
-      "notas": [75, 70, 72],
-      "frequencia": [1,1,1,0,1,1,1,1,1,1]
+      "nome": "Potássio"
     },
     {
       "id": 5,
-      "nome": "Lucas Pereira",
-      "idade": 23,
-      "notas": [40, 55, 50],
-      "frequencia": [0,0,1,0,1,0,1,0,0,1]
+      "nome": "Rubídio"
+    },
+    {
+      "id": 6,
+      "nome": "Césio"
+    },
+    {
+      "id": 7,
+      "nome": "Frâncio"
+    }
+  ],
+  "símbolos": [
+    {
+      "id": 1,
+      "sigla": "H"
+    },
+    {
+      "id": 2,
+      "sigla": "Li"
+    },
+    {
+      "id": 3,
+      "sigla": "Na"
+    },
+    {
+      "id": 4,
+      "sigla": "K"
+    },
+    {
+      "id": 5,
+      "sigla": "Rb"
+    },
+    {
+      "id": 6,
+      "sigla": "Cs"
+    },
+    {
+      "id": 7,
+      "sigla": "Fr"
+    }
+  ],
+  "números atômicos": [
+    {
+      "id": 1,
+      "valor": 1
+    },
+    {
+      "id": 2,
+      "valor": 3
+    },
+    {
+      "id": 3,
+      "valor": 11
+    },
+    {
+      "id": 4,
+      "valor": 19
+    },
+    {
+      "id": 5,
+      "valor": 37
+    },
+    {
+      "id": 6,
+      "valor": 55
+    },
+    {
+      "id": 7,
+      "valor": 87
     }
   ]
 }
