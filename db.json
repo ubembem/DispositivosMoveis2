@@ -29,7 +29,7 @@
       "nome": "Frâncio"
     }
   ],
-  "símbolos": [
+  "simbolos": [
     {
       "id": 1,
       "sigla": "H"
@@ -59,7 +59,7 @@
       "sigla": "Fr"
     }
   ],
-  "números atômicos": [
+  "numerosAtomicos": [
     {
       "id": 1,
       "valor": 1
