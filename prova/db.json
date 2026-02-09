@@ -1,0 +1,12 @@
+{
+  "planetas": [
+    { "nome": "Mercúrio", "gravidade": 3.7 },
+    { "nome": "Vênus", "gravidade": 8.9 },
+    { "nome": "Terra", "gravidade": 9.8 },
+    { "nome": "Marte", "gravidade": 3.7 },
+    { "nome": "Júpiter", "gravidade": 24.8 },
+    { "nome": "Saturno", "gravidade": 10.4 },
+    { "nome": "Urano", "gravidade": 8.7 },
+    { "nome": "Netuno", "gravidade": 11.2 }
+  ]
+}
