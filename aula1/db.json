@@ -1,17 +1,17 @@
 [
 {
-	nome: "Paulo",
-	curso: "Sistema para Internet",
-	idade: 33
+	"nome": "Paulo",
+	"curso": "Sistema para Internet",
+	"idade": 33
 },
 {
-	nome: "Paula",
-	curso: "Informática",
-	idade: 35
+	"nome": "Paula",
+	"curso": "Informática",
+	"idade": 35
 },
 {
-	nome: "Ana",
-	curso: "Agronomia",
-	idade: 25
+	"nome": "Ana",
+	"curso": "Agronomia",
+	"idade": 25
 }
 ]
