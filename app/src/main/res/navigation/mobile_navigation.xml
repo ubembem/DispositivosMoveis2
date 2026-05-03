@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_lista">
+
+    <fragment
+        android:id="@+id/nav_consulta"
+        android:name="com.pdm2.prova1treino2.ui.consulta.ConsultaFragment"
+        android:label="@string/consulta_por_id"
+        tools:layout="@layout/fragment_consulta" />
+
+    <fragment
+        android:id="@+id/nav_lista"
+        android:name="com.pdm2.prova1treino2.ui.lista.ListaFragment"
+        android:label="@string/menu_lista"
+        tools:layout="@layout/fragment_lista" />
+
+    <fragment
+        android:id="@+id/nav_camera"
+        android:name="com.pdm2.prova1treino2.ui.camera.CameraFragment"
+        tools:layout="@layout/fragment_camera" />
+
+    <fragment
+        android:id="@+id/nav_mapa"
+        android:name="com.pdm2.prova1treino2.ui.mapa.MapaFragment"
+        android:label="Mapa"
+        tools:layout="@layout/fragment_mapa"/>
+
+    <fragment
+        android:id="@+id/nav_tentativas"
+        android:name="com.pdm2.prova1treino2.ui.tentativa.TentativasFragment"
+        android:label="Tentativas"
+        tools:layout="@layout/fragment_tentativas"/>
+
+</navigation>

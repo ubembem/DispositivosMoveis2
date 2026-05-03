@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_lista">Lista</string>
+    <string name="digite_um_valor_de_1_a_6">Digite um valor de 1 a 6</string>
+    <string name="consultar">Consultar</string>
+    <string name="consulta_por_id">Consulta por id</string>
+    <string name="consulta_por_id_">Consulta por ID</string>
+    <string name="tirar_foto">Tirar foto</string>
+    <string name="imagem_tirada_da_camera">imagem tirada da camera</string>
+    <string name="voltar">Voltar</string>
+    <string name="mapa">Mapa</string>
+    <string name="tentativas">Tentativas</string>
+</resources>

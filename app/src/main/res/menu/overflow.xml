@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_mapa"
+        android:icon="@drawable/ic_settings_black_24dp"
+        android:title="@string/mapa" />
+    <item
+        android:id="@+id/nav_tentativas"
+        android:icon="@drawable/ic_slideshow_black_24dp"
+        android:title="@string/tentativas" />
+</menu>
