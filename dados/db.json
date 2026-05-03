@@ -1,0 +1,65 @@
+[
+  {
+    "number": 1,
+    "person": "Lucas Ferreira",
+    "count": 3,
+    "responses": [
+      ["V", "F", "V", "V", "F"],
+      ["F", "V", "F", "F", "V"],
+      ["V", "V", "V", "V", "V"]
+    ],
+    "solution": ["V", "F", "V", "V", "F"]
+  },
+  {
+    "number": 2,
+    "person": "Beatriz Santos",
+    "count": 2,
+    "responses": [
+      ["F", "V", "V", "F", "V"],
+      ["V", "F", "F", "V", "F"]
+    ],
+    "solution": ["V", "F", "V", "F", "V"]
+  },
+  {
+    "number": 3,
+    "person": "Rafael Almeida",
+    "count": 4,
+    "responses": [
+      ["V", "V", "F", "F", "V"],
+      ["F", "F", "V", "V", "F"],
+      ["V", "F", "V", "V", "F"],
+      ["F", "V", "F", "F", "V"]
+    ],
+    "solution": ["V", "V", "F", "F", "V"]
+  },
+  {
+    "number": 4,
+    "person": "Isabela Rocha",
+    "count": 1,
+    "responses": [
+      ["V", "F", "V", "F", "V"]
+    ],
+    "solution": ["V", "F", "V", "F", "V"]
+  },
+  {
+    "number": 5,
+    "person": "Mateus Costa",
+    "count": 3,
+    "responses": [
+      ["F", "V", "F", "V", "F"],
+      ["V", "V", "V", "F", "V"],
+      ["F", "F", "F", "V", "F"]
+    ],
+    "solution": ["V", "F", "V", "F", "V"]
+  },
+  {
+    "number": 6,
+    "person": "Juliana Mendes",
+    "count": 2,
+    "responses": [
+      ["V", "F", "V", "V", "F"],
+      ["F", "V", "F", "F", "V"]
+    ],
+    "solution": ["V", "V", "F", "V", "F"]
+  }
+]
