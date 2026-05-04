@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 public class Repositorio {
-    private static final String URL = "https://raw.githubusercontent.com/ubembem/DispositivosMoveis2/refs/heads/main/prova/db.json";
+    private static final String URL = "https://raw.githubusercontent.com/ubembem/DispositivosMoveis2/refs/heads/main/dados/db.json";
     private ExecutorService executor;
     public Repositorio() {
         executor = Executors.newSingleThreadExecutor();

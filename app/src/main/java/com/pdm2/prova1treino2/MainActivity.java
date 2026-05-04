@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -25,7 +26,9 @@ import com.pdm2.prova1treino2.helper.PermissaoDialogFragment;
 
 public class MainActivity extends AppCompatActivity {
     private static final int CODIGO_SOLICITACAO = 1;
+    private static final int CODIGO_SOLICITACAO_MAPA = 2;
     private static final String PERMISSAO = Manifest.permission.CAMERA;
+    private static final String PERMISSAO_MAPA = Manifest.permission.ACCESS_FINE_LOCATION;
     private AppBarConfiguration mAppBarConfiguration;
 
     @Override
@@ -66,8 +69,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.nav_mapa) {
-            NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-            navController.navigate(R.id.nav_mapa, null, new NavOptions.Builder().setPopUpTo(R.id.nav_lista, true).build());
+            solicitarPermissaoMapa(new String[]{
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+            });
         }
         if (item.getItemId() == R.id.nav_tentativas) {
             NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
@@ -95,6 +100,20 @@ public class MainActivity extends AppCompatActivity {
                 dialog.show(getSupportFragmentManager(), "PermissaoDialog");
             }
         }
+        if (requestCode == CODIGO_SOLICITACAO_MAPA) {
+            boolean granted = true;
+            for (int result : grantResults) {
+                if (result != PackageManager.PERMISSION_GRANTED) {
+                    granted = false;
+                    break;
+                }
+            }
+            if (granted) {
+                inicializarMapa();
+            } else {
+                Toast.makeText(this, "Permissão negada. O mapa não será exibido.", Toast.LENGTH_LONG).show();
+            }
+        }
     }
 
     private void solicitarPermissao() {
@@ -105,6 +124,23 @@ public class MainActivity extends AppCompatActivity {
             chamarFragmento();
         }
     }
+
+    private void solicitarPermissaoMapa(String[] permissions) {
+        for (String permission : permissions) {
+            if (ContextCompat.checkSelfPermission(this, permission)
+                    != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, permissions, CODIGO_SOLICITACAO_MAPA);
+                return;
+            }
+        }
+        inicializarMapa();
+    }
+
+    private void inicializarMapa() {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+        navController.navigate(R.id.nav_mapa, null, new NavOptions.Builder().setPopUpTo(R.id.nav_lista, true).build());
+    }
+
     private void chamarFragmento() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         navController.navigate(R.id.nav_camera);
