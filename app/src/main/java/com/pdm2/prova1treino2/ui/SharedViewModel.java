@@ -1,8 +1,6 @@
 package com.pdm2.prova1treino2.ui;
 
 import android.graphics.Bitmap;
-import android.graphics.Camera;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -10,6 +8,7 @@ import com.pdm2.prova1treino2.helper.CalcularAcertos;
 import com.pdm2.prova1treino2.model.Aluno;
 import com.pdm2.prova1treino2.repository.Repositorio;
 import java.util.List;
+import java.util.Objects;
 
 public class SharedViewModel extends ViewModel {
     private Repositorio repositorio;
@@ -18,6 +17,7 @@ public class SharedViewModel extends ViewModel {
     private MutableLiveData<Aluno> alunoVar = new MutableLiveData<>();
     private MutableLiveData<String> acertos = new MutableLiveData<>();
     private MutableLiveData<Bitmap> foto = new MutableLiveData<>();
+    private String piorAluno;
 
     public SharedViewModel() {
         this.repositorio = new Repositorio();
@@ -87,5 +87,13 @@ public class SharedViewModel extends ViewModel {
 
     public void setFoto(Bitmap bitmap){
         foto.postValue(bitmap);
+    }
+
+    public String getPiorAluno(){
+        if (lista.getValue() == null || lista.getValue().isEmpty()) {
+            return "Dados não carregados";
+        }
+        piorAluno =  CalcularAcertos.calcularPiorAluno(Objects.requireNonNull(lista.getValue()));
+        return piorAluno;
     }
 }//

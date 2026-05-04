@@ -1,18 +1,12 @@
 package com.pdm2.prova1treino2;
 
-import static java.security.AccessController.getContext;
-
 import android.Manifest;
-import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Toast;
-
 import com.google.android.material.navigation.NavigationView;
-
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -23,14 +17,18 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.pdm2.prova1treino2.databinding.ActivityMainBinding;
+import com.pdm2.prova1treino2.helper.NotificationHelper;
 import com.pdm2.prova1treino2.helper.PermissaoDialogFragment;
+import com.pdm2.prova1treino2.helper.PermissionHelper;
 
 public class MainActivity extends AppCompatActivity {
     private static final int CODIGO_SOLICITACAO = 1;
     private static final int CODIGO_SOLICITACAO_MAPA = 2;
     private static final String PERMISSAO = Manifest.permission.CAMERA;
+    private static final int REQUEST_NOTIFICACAO = 100;
+    private PermissionHelper permissionHelper;
+    private NotificationHelper notificationHelper;
     private AppBarConfiguration mAppBarConfiguration;
 
     @Override
@@ -39,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
 
         ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        permissionHelper = new PermissionHelper(this);
+        notificationHelper = new NotificationHelper(this);
 
         setSupportActionBar(binding.appBarMain.toolbar);
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +60,9 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+        if (getIntent() != null && "pior_aluno".equals(getIntent().getStringExtra("destino"))) {
+            navController.navigate(R.id.nav_pior_aluno);
+        }
     }
 
     @Override
@@ -77,6 +81,14 @@ public class MainActivity extends AppCompatActivity {
             });
         }
         if (item.getItemId() == R.id.nav_tentativas) {
+            if (permissionHelper.temPermissaoNotificacao()) {
+                notificationHelper.gerarNotificacao(
+                        "Resultado já disponível!",
+                        "Clique aqui para ver o nome do aluno com o pior rendimento."
+                );
+            } else {
+                permissionHelper.solicitarPermissao(REQUEST_NOTIFICACAO);
+            }
             NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
             navController.navigate(R.id.nav_tentativas, null, new NavOptions.Builder().setPopUpTo(R.id.nav_lista, true).build());
         }
@@ -109,6 +121,15 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             inicializarMapa();
+        }
+
+        if (requestCode == REQUEST_NOTIFICACAO) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                notificationHelper.gerarNotificacao(
+                        "Permissão concedida!",
+                        "Agora você pode receber notificações."
+                );
+            }
         }
     }
 

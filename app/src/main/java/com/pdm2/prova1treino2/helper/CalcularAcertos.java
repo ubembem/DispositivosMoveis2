@@ -1,5 +1,7 @@
 package com.pdm2.prova1treino2.helper;
 
+import android.util.Log;
+
 import com.pdm2.prova1treino2.model.Aluno;
 
 import java.util.List;
@@ -39,18 +41,31 @@ public class CalcularAcertos {
     }
 
     public static String calcularErrosString(Aluno aluno) {
-        StringBuilder sb = new StringBuilder();
+        if (aluno.getResponses().isEmpty() || aluno.getSolution().isEmpty()){
+            return "0";
+        }
         int totalDeErros = 0;
         for (List<String> resposta : aluno.getResponses()){
             for(int i = 0; (i < resposta.size()) && (i < aluno.getSolution().size()); i++){
-                if (resposta.get(i).equals(aluno.getSolution().get(i))){
-                    continue;
-                }else{
+                if (!resposta.get(i).equals(aluno.getSolution().get(i))){
                     totalDeErros++;
                 }
             }
         }
-        sb.append(totalDeErros);
-        return sb.toString();
+        return String.valueOf(totalDeErros);
+    }
+
+    public static String calcularPiorAluno(List<Aluno> alunos) {
+        Aluno piorAluno = alunos.get(0);
+        for (Aluno aluno : alunos){
+            if (calcularAcertos(piorAluno.getResponses(), piorAluno.getSolution()) > calcularAcertos(aluno.getResponses(), aluno.getSolution())){
+                piorAluno = aluno;
+            }
+        }
+        StringBuilder pior = new StringBuilder();
+        pior = pior.append("Aluno com pior taxa de acerto: ").append("\n").append(piorAluno.getPerson()).append("\n");
+        pior.append("\n").append("Total de erros: ").append(CalcularAcertos.calcularErrosString(piorAluno)).append("\n");
+        pior.append("Acertos: ").append(CalcularAcertos.calcularAcertosString(piorAluno));
+        return pior.toString();
     }
 }
