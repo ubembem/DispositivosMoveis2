@@ -1,6 +1,9 @@
 package com.pdm2.prova1treino2;
 
+import static java.security.AccessController.getContext;
+
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -28,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
     private static final int CODIGO_SOLICITACAO = 1;
     private static final int CODIGO_SOLICITACAO_MAPA = 2;
     private static final String PERMISSAO = Manifest.permission.CAMERA;
-    private static final String PERMISSAO_MAPA = Manifest.permission.ACCESS_FINE_LOCATION;
     private AppBarConfiguration mAppBarConfiguration;
 
     @Override
@@ -39,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarMain.toolbar);
-        binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {  //adicionar um listener para capturar evento de clique
+        binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 solicitarPermissao();
@@ -94,25 +96,19 @@ public class MainActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == CODIGO_SOLICITACAO) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                chamarFragmento();
+                chamarFragmentoCamera();
             } else {
                 PermissaoDialogFragment dialog = new PermissaoDialogFragment();
                 dialog.show(getSupportFragmentManager(), "PermissaoDialog");
             }
         }
         if (requestCode == CODIGO_SOLICITACAO_MAPA) {
-            boolean granted = true;
             for (int result : grantResults) {
                 if (result != PackageManager.PERMISSION_GRANTED) {
-                    granted = false;
                     break;
                 }
             }
-            if (granted) {
-                inicializarMapa();
-            } else {
-                Toast.makeText(this, "Permissão negada. O mapa não será exibido.", Toast.LENGTH_LONG).show();
-            }
+            inicializarMapa();
         }
     }
 
@@ -121,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         if (temPermissao != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{PERMISSAO}, CODIGO_SOLICITACAO);
         } else {
-            chamarFragmento();
+            chamarFragmentoCamera();
         }
     }
 
@@ -141,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
         navController.navigate(R.id.nav_mapa, null, new NavOptions.Builder().setPopUpTo(R.id.nav_lista, true).build());
     }
 
-    private void chamarFragmento() {
+    private void chamarFragmentoCamera() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         navController.navigate(R.id.nav_camera);
     }
